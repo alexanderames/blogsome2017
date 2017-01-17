@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   root 'blog_posts#index'
 
   resources :blog_posts

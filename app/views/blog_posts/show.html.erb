@@ -8,7 +8,7 @@
 			</p>
 	</div>		
 	<div class="panel-body">
-	by <strong><%= @blog_post.author %></strong><br> 
+	by <strong><%= @blog_post.user.email %></strong><br> 
 	<p><%= @blog_post.blog_entry %></p>
 	</div>
 </div>
@@ -27,10 +27,12 @@
 		<h4>Comments</h4>
 	</div>
 	<% @blog_post.comments.each do |comment| %>
+	<div class="panel panel-success">
 		<div class="panel-body">
-			<p><strong><%= comment.author %></strong> said: </p>
+			<p><strong><%= comment.user.email %></strong> said: </p>
 			<p><%= comment.comment_entry %></p>
 		</div>
+	</div>
 	<% end %>
 </div>
 

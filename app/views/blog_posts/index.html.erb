@@ -1,5 +1,6 @@
-<h1>Current Blog Posts</h1>
-
+<center><h1>Current Blog Posts</h1>
+<%= link_to 'New Blog Post', new_blog_post_path, class: "btn btn-info" %></center>
+<br>
 <div class="row">
   <% @blog_posts.each do |blog_post| %>
     <div class="col-md-6">
@@ -24,4 +25,3 @@
   
 <br>
 
-<%= link_to 'New Blog Post', new_blog_post_path, class: "btn btn-info" %>

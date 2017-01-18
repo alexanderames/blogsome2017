@@ -19,6 +19,18 @@
 	</div>
 </div>
 
+<div class="panel panel-default">
+	<div class="panel-header">
+		<h4>Comments</h4>
+	</div>
+	<% @blog_post.comments.each do |comment| %>
+		<div class="panel-body">
+			<p><strong><%= comment.author %></strong> said: </p>
+			<p><%= comment.comment_entry %></p>
+		</div>
+	<% end %>
+</div>
+
 <div>
 	<%= link_to 'Back', blog_posts_path %>
 	<%= link_to 'Edit', edit_blog_post_path(@blog_post) %>

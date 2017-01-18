@@ -16,3 +16,17 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+	background-image: url(fabric.jpg);
+}
+
+.container {
+	background-color: rgba(255,255,255,0.5);
+	margin-top: 50px;
+	border-radius: 25px;
+}
+
+.panel-heading {
+	background-image: url(bluish.png);
+}

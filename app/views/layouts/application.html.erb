@@ -6,28 +6,25 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Source+Sans+Pro" rel="stylesheet">  </head>
 
   <body>
-  <!-- Sidebar -->
+  
   <div id="wrapper">
     <div class="overlay"></div>
+  <% if user_signed_in? %>
+  <!-- Sidebar -->
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
       <ul class="nav sidebar-nav">
         <li class="sidebar-brand">
-            <a href="#">Bootstrap 3</a>
+            <%= link_to "Blogsome", root_path, class: "navbar-brand" %>
+        </li>
+        
+        <li>
+            <a href="#"><i class="fa fa-fw fa-home"></i> <%= link_to "Edit Profile", edit_user_registration_path %></a>
         </li>
         <li>
-            <a href="#"><i class="fa fa-fw fa-home"></i> Home</a>
-        </li>
-        <li>
-            <a href="#"><i class="fa fa-fw fa-folder"></i> Page one</a>
-        </li>
-        <li>
-            <a href="#"><i class="fa fa-fw fa-file-o"></i> Second page</a>
-        </li>
-        <li>
-            <a href="#"><i class="fa fa-fw fa-cog"></i> Third page</a>
+            <a href="#"><i class="fa fa-fw fa-folder"></i><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></a>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> Dropdown <span class="caret"></span></a>
@@ -37,20 +34,29 @@
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
             <li><a href="#">Separated link</a></li>
-            <li><a href="#">One more separated link</a></li>
+            <li><%= link_to 'New Blog Post', new_blog_post_path, class: "btn btn-info" %></li>
           </ul>
         </li>
-        <li>
-            <a href="#"><i class="fa fa-fw fa-bank"></i> Page four</a>
+        </nav>
+        <% else %>
+        <!-- Sidebar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+      <ul class="nav sidebar-nav">
+        <li class="sidebar-brand">
+            <%= link_to "Blogsome", root_path, class: "navbar-brand" %>
         </li>
         <li>
-            <a href="#"><i class="fa fa-fw fa-dropbox"></i> Page 5</a>
+            <a href="#"><i class="fa fa-fw fa-bank"></i> <%=link_to "Sign In", user_session_path %></a>
         </li>
         <li>
-            <a href="#"><i class="fa fa-fw fa-twitter"></i> Last page</a>
+            <a href="#"><i class="fa fa-fw fa-dropbox"></i><%= link_to "Forgot Password", new_user_password_path %></a>
+        </li>
+        <li>
+            <a href="#"><i class="fa fa-fw fa-bank"></i> <%=link_to "Sign Up", new_user_registration_path %></a>
         </li>
       </ul>
     </nav>
+    <% end %>
     <!-- /#sidebar-wrapper -->
     <!-- Hamburgler -->
     <div id="page-content-wrapper">
@@ -60,14 +66,10 @@
         <span class="hamb-bottom"></span>
       </button>
     <!-- end of nav and burger -->  
+  </div>
+  
   <div class="container">
-  <div class="pull-right">
-    <% if user_signed_in? %>
-    <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
-      <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
-    <% end %>
-  </div>
-  <%= yield %>
-  </div>
+    <%= yield %>
+    </div>
   </body>
 </html>

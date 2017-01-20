@@ -17,6 +17,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+h1, h2, h3, h4, h5, h6, li {
+  font-family: 'Gloria Hallelujah', cursive;
+  text-align: center;
+}
+
+p {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+
 body {
 	background-image: url(school.png);
 }

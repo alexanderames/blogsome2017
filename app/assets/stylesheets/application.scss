@@ -22,13 +22,12 @@ h1, h2, h3, h4, h5, h6, li {
   text-align: center;
 }
 
-p {
-  font-family: 'Source Sans Pro', sans-serif;
-}
-
-
 body {
 	background-image: url(school.png);
+  font-family: 'Source Sans Pro', sans-serif;
+      position: relative;
+    overflow-x: hidden;
+    height: 100%;
 }
 
 .container {
@@ -39,15 +38,6 @@ body {
 
 .panel-heading {
 	background-image: url(bluish.png);
-}
-
-body {
-    position: relative;
-    overflow-x: hidden;
-}
-body,
-html {
-  height: 100%;
 }
 
 .nav {

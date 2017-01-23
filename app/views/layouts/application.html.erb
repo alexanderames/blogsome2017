@@ -29,11 +29,11 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li class="dropdown-header">Dropdown heading</li>
+            <li class="dropdown-header">blogPosts</li>
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
-            <li><a href="#">Separated link</a></li>
+            <li><%= link_to "Your Posts", your_posts_path %></li>
             <li><%= link_to 'New Blog Post', new_blog_post_path, class: "btn btn-info" %></li>
           </ul>
         </li>

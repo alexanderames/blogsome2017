@@ -4,39 +4,39 @@
 	<div class="panel-heading">
 			<h2><%= @blog_post.title %></h3>
 			<p class="text-right">
-				<span class="posted-at">posted on: <%=@blog_post.created_at.strftime('%m/%d/%Y at %I:%M%p') %></span>
+				<span class="posted-at"><%= @blog_post.created_at.strftime('%B %-d, %Y') %></span>
 			</p>
 	</div>		
 	<div class="panel-body">
-	by <strong><%= @blog_post.user.username %></strong><br> 
+	by <strong><%= link_to @blog_post.user.username, user_posts_path(id: @blog_post.user.id) %></strong><br> <br>
 	<p><%= @blog_post.blog_entry %></p>
 	</div>
 </div>
 
 <div class="panel panel-success">
 	<div class="panel-heading">
-		Make a Comment
+		<h3>Make a Comment</h3>
 	</div>
 	<div class="panel-body">
 		<%= render 'comments/form' %>
 	</div>
 </div>
 
-<div class="panel panel-default">
-	<div class="panel-header">
-		<h4>Comments</h4>
-	</div>
-	<% @blog_post.comments.each do |comment| %>
-	<div class="panel panel-success">
-		<div class="panel-body">
-			<p><strong><%= comment.user.username %></strong> said: </p>
-			<p><%= comment.comment_entry %></p>
-		</div>
-	</div>
-	<% end %>
+<div class="panel">
+    <div class="panel-heading">
+      <h4>Comments</h4>
+    </div>
+    <% @blog_post.comments.each do |comment| %>
+        <div class="panel-body">
+      <p><strong><%= link_to comment.user.username, user_posts_path(id: comment.user_id) %></strong> said:</p>
+            <p><%= comment.comment_entry %></p>
+            <% if current_user.id == @blog_post.user.id || current_user.id == comment.user_id %>
+        <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
+      <% end %>
+      </div>
+    <% end %>
 </div>
 
 <div>
 	<%= link_to 'Back', blog_posts_path %>
-	<%= link_to 'Edit', edit_blog_post_path(@blog_post) %>
 </div>

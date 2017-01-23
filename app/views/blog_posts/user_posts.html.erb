@@ -1,0 +1,17 @@
+<h1><%= @user.username %>'s Page</h1>
+
+<div>
+	<% @user.blog_posts.each do |blog_post| %>
+		<div class="col-md-12">
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h4><%= link_to blog_post.title, blog_post %></h4>
+				</div>
+				<div class="panel-body">
+					<p><span class="posted-at"><%= blog_post.created_at.strftime('%B %-d, %Y') %></span></p>
+					<p><%= blog_post.blog_entry[0..250] %>[<%=link_to "continue reading", blog_post %></p>
+				</div>
+			</div>
+		</div>
+	<% end -%>
+</div>

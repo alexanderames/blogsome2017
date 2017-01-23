@@ -10,6 +10,7 @@
           <h4><%= link_to blog_post.title, blog_post %></h4>
         </div>
         <div class="panel-body">
+        <p class="round-image-50"><%= image_tag(blog_post.user.avatar.url(:thumb)) %></p>
           <h6>by <%= link_to blog_post.user.username, user_posts_path(id: blog_post.user.id) %><br/></h6>
           <br>
           <p><%= blog_post.blog_entry[0..250] %>...<%= link_to "continue reading", blog_post %></p>

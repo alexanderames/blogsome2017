@@ -18,6 +18,7 @@
       <ul class="nav sidebar-nav">
         <li class="sidebar-brand">
             <%= link_to "Blogsome", root_path, class: "navbar-brand" %>
+             <li class="round-image-50"><%= image_tag(current_user.avatar.url(:thumb)) %></li>
         </li>
         
         <li>
